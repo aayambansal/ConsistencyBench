@@ -1,0 +1,14 @@
+Figure~\ref{fig:gap} visualizes the consistency gap ($\text{IA} - \text{SCR}$) across models and strategies.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/consistency_gap.pdf}
+\caption{The consistency gap (IA\% $-$ SCR\%) across models and strategies. Smaller gaps indicate better cross-query consistency. \method{} consistently narrows the gap compared to all baselines.}
+\label{fig:gap}
+\end{figure}
+
+The consistency gap reveals that:
+\begin{itemize}
+    \item The gap is \emph{larger} for stronger models in absolute terms, because their higher IA creates more room for SCR to lag behind. However, the gap \emph{ratio} (SCR/IA) tends to be more favorable for stronger models.
+    \item \method{} reduces the gap by improving SCR more than it changes IA, confirming that our method specifically targets the consistency failure mode rather than broadly improving reasoning.
+\end{itemize}

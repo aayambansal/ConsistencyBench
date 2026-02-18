@@ -1,0 +1,35 @@
+Table~\ref{tab:errors} shows representative examples of cross-query contradictions from the Direct prompting evaluation.
+
+\begin{table}[t]
+\caption{Representative cross-query contradictions. The model answers Q1 correctly but contradicts itself on Q2, despite Q2 being logically entailed by the same premises.}
+\label{tab:errors}
+\begin{center}
+\small
+\begin{tabular}{p{1.2cm}p{5.5cm}p{1cm}p{1cm}}
+\toprule
+\textbf{Category} & \textbf{Question (abbreviated)} & \textbf{Exp.} & \textbf{Pred.} \\
+\midrule
+Common. & Q1: Given that "The election results were announced", is it reasonable to conclude t... & Yes & Yes \\
+         & Q2: If we know that it is NOT the case that "an election took place", is it possible... & No & N/A \\
+\midrule
+Neg. & Q1: Is the following statement true? "Gravity pulls objects toward the center of the... & Yes & Yes \\
+         & Q2: Is the negation of the following statement true? "It is NOT the case that gravit... & No & Yes \\
+\midrule
+M.Tollens & Q1: Given: "If the road is clear, then Victor goes for a walk." We observe that Vict... & Yes & Yes \\
+         & Q2: Given: "If the road is clear, then Victor goes for a walk." We observe that Vict... & No & No \\
+\midrule
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+\paragraph{Common error patterns.}
+We identify three dominant error patterns:
+\begin{enumerate}
+    \item \textbf{Contrapositive blindness} (most common): Models affirm $P \to Q$ but deny $\neg Q \to \neg P$, treating the contrapositive as a separate and uncertain claim rather than a logical equivalence.
+    \item \textbf{Fallacy acceptance}: Models frequently affirm the consequent (``Q is true, therefore P is true'') and deny the antecedent (``not P, therefore not Q''), treating these invalid inferences as valid.
+    \item \textbf{Over-cautious hedging}: On some questions, models output ``Cannot be determined'' when the answer is logically certain, particularly for contrapositive and transitive inferences.
+\end{enumerate}
+
+\paragraph{\method{} repair examples.}
+When \method{} detects a contradiction (e.g., answering ``No'' to the contrapositive after answering ``Yes'' to modus ponens), the revision prompt surfaces the inconsistency. In the majority of cases, the model corrects itself when shown the contradiction, suggesting that the knowledge of logical equivalence is latent but not reliably activated during independent generation.

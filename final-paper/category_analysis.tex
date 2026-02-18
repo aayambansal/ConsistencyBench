@@ -1,0 +1,15 @@
+Figure~\ref{fig:category} shows the set-level consistency rate broken down by category for Direct prompting and \method{}. Several patterns emerge:
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/category_heatmap.pdf}
+\caption{Set-level consistency rate (SCR\%) by category for Direct prompting (left) and \method{} (right). \method{} provides consistent improvements across categories, with the largest gains on contrapositive and modus tollens.}
+\label{fig:category}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Syll. is the hardest category}: With an average SCR of 6.3\% across models under Direct prompting, this category presents the greatest consistency challenge.
+    \item \textbf{Trans. is relatively easier}: Models achieve an average SCR of 25.9\%, likely because these reasoning patterns are better represented in training data.
+    \item \textbf{Fallacy detection is unreliable}: Questions testing whether models correctly \emph{reject} invalid inferences show lower accuracy than questions testing valid inferences.
+    \item \textbf{\method{} helps most where consistency matters most}: The largest \method{} improvements appear in categories that specifically test logical equivalence, where cross-query contradictions are most common.
+\end{itemize}

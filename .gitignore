@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# LaTeX artifacts
+*.aux
+*.bbl
+*.blg
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+missfont.log
+final-paper/*.log
+final-paper/*.aux
+final-paper/*.bbl
+final-paper/*.blg
+final-paper/*.out
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS resource forks
+__MACOSX/
+
+# Old paper directory (template only)
+paper/
